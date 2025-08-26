@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>我的書庫</title>
+
+<script>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+    }
+</script>
+
+<link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="modal.css">
+
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h2><i class='bx bx-book'></i> Book App</h2>
+      <ul class="nav-list">
+        <li id="navHome"><i class='bx bx-home'></i> 首頁</li>
+        <li id="navSearch"><i class='bx bx-search'></i> 搜尋書籍</li>
+        <li id="navLibrary" class="active"><i class='bx bx-collection'></i> 書庫</li>
+      </ul>
+      <button id="themeToggle" class="theme-btn">
+        <i class='bx bx-moon'></i> 切換主題
+      </button>
+    </aside>
+
+    <main class="content">
+      
+      <h3>我的書庫</h3>
+
+      <div id="libraryControls">
+        <input type="text" id="librarySearchInput" placeholder="搜尋書名或作者...">
+        <select id="librarySortSelect">
+          <option value="default">依新增順序</option>
+          <option value="title">依書名</option>
+          <option value="author">依作者</option>
+        </select>
+        <button id="toggleEditBtn">
+          <i class='bx bx-edit-alt'></i> 編輯
+        </button>
+      </div>
+
+      <div id="batchEditControls" style="display: none;">
+          <button id="selectAllBtn">全選</button>
+          <button id="batchDeleteBtn">批量刪除</button>
+          <input type="text" id="batchSeriesInput" placeholder="批量修改叢書系列...">
+          <button id="batchSeriesBtn">套用</button>
+      </div>
+
+      <div id="libraryList"></div>
+    </main>
+  </div>
+
+  <div id="bookModal" class="modal-overlay">
+      <div class="modal-content">
+          <button id="closeModalBtn" class="back-link"><i class='bx bx-left-arrow-alt'></i>返回</button>
+          <div class="detail-wrap">
+              <div class="detail-cover">
+                  <img id="bookCover" src="" alt="封面">
+              </div>
+              <div class="detail-info">
+                  <h2 id="bookName">書名</h2>
+                  <p><b>日文書名：</b><span id="bookNameJP"></span></p>
+                  <p><b>作者：</b><span id="bookAuthor"></span></p>
+                  <p id="illustrator-row"><b>繪者：</b><span id="bookIllustrator"></span></p>
+                  <p><b>出版社：</b><span id="bookPublisher"></span></p>
+                  <p><b>出版日期：</b><span id="bookDate"></span></p>
+                  <p><b>語言：</b><span id="bookLang"></span></p>
+                  <p><b>定價：</b><span id="bookPrice"></span></p>
+                  <p><b>ISBN：</b><span id="bookISBN"></span></p>
+                  <p><b>規格：</b><span id="bookSpec"></span></p>
+                  <p><b>叢書系列：</b><span id="bookSeries"></span></p>
+                  <p><b>類別：</b><span id="bookCategory"></span></p>
+                  <p><b>簡介：</b><span id="bookDesc"></span></p>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <script src="library.js"></script>
+</body>
+</html>
