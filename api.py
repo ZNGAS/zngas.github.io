@@ -13,7 +13,7 @@ import re
 import sys
 from random import uniform
 import time
-import requests # 雖然是 Selenium 版本，但下載圖片仍然用 requests
+import requests 
 from webdriver_manager.chrome import ChromeDriverManager
 from flask_cors import CORS
 
